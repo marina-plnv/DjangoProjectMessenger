@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+{% load socialaccount %}
+{% block title %} Login - Messenger {% endblock %}
+{% block content %}
+<div class="social-container">
+    <h3>Sign in</h3>
+    <div class="btn-group">
+        <button>
+            <a href="{% provider_login_url 'google' %}" style="text-decoration:none">Sign in with Google</a>
+        </button>
+        <button>
+            <a href="{% provider_login_url 'twitter' %}" style="text-decoration:none">Sign in with Twitter</a>
+        </button>
+    </div>
+    <br>
+    <h3>{{count_bro}}Bro! {{count_sis}}Sis! {{last}}</h3>
+</div>
+{% endblock %}

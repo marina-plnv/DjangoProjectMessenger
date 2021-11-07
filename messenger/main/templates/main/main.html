@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Home - Messenger</title>
+</head>
+<body>
+<div class="w3-container mt-5 ml-5">
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
+    <br>
+    <h4>{{last_message}}</h4>
+    <div class="w3-container">
+        <p><i>Sent by {{last_user}} at {{last_date}}</i></p>
+    </div>
+    <br>
+    <div class="w3-bar">
+        <form action='{% url "main:message" %}' method='POST'>
+            <input type="hidden" name="send_message">
+            {% csrf_token %}
+            <button type="submit" name="bro" class="w3-button w3-teal" style="width:20%">Bro!</button>
+            <button type="submit" name="sis" class="w3-button w3-teal" style="width:20%">Sis!</button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="w3-show-inline-block">
+        <br>
+        <br>
+        <button type="submit"><a href="{% url 'account_logout' %}" style="text-decoration:none">Sign Out</a></button>
+    </div>
+</div>
+</body>
+</html>
